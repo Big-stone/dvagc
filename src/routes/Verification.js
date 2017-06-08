@@ -42,12 +42,6 @@ function Verification() {
                         </div>
                     </div>
                 </div>
-             <div className={veri.copyright}>
-                <p>copyright© 新道科技股份有限公司 琼ICP备11002248号-3</p>
-                <p>北京市海淀区北清路68号用友软件园　
-                    <span>三亚地址:海南省三亚市崖城镇创意产业园内</span>
-                </p>
-            </div>
             </div>
         </div>
     )

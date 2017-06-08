@@ -95,16 +95,3 @@ body {
   font-size: 14px;
   margin-top: 15px;
 }
-/*版权*/
-.container .copyright {
-  width: 500px;
-  height: 40px;
-  text-align: center;
-  font-size: 13px;
-  font-family: PingFangSC-Regular;
-  color: #999999;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  margin-left: -250px;
-}

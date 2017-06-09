@@ -32,7 +32,7 @@ function Verification() {
                         {/*内容部分*/}
                         <div className={veri.content} id="content">
                             <Input type="large" placeholder="请选择你的学校" id="getSchool" onClick={getSchool}/>
-                            <Input size="large" placeholder="请输入你的学号" />
+                            <Input size="large" placeholder="请输入你的学号" onChange={handleChange}/>
                             <Input size="large" placeholder="请输入你的姓名" />
                         </div>
                         {/*按钮部分*/}
@@ -82,4 +82,7 @@ const getSchool = () => {
     
 }
 
+const handleChange = () => {
+    
+}
 export default connect()(Verification);

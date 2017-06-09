@@ -3,7 +3,9 @@ export default {
 
   namespace: 'example',
 
-  state: {},
+  state: {
+    dataSource: []
+  },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
@@ -11,8 +13,15 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save' });
+    
+    *search() {
+      this.setState({
+        dataSource: !value ? [] : [
+          value,
+          value + value,
+          value + value + value,
+        ],
+      });
     },
   },
 

@@ -10,14 +10,15 @@ body {
   overflow: hidden;
   margin: 0 auto;
 }
+/*主体部分*/
 .container .container_main {
-  width: 880px;
+  width: 600px;
   height: 560px;
   background-color: #fff;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: -440px;
+  margin-left: -300px;
   margin-top: -280px;
 }
 .container .container_main .main {
@@ -31,11 +32,18 @@ body {
   height: 200px;
   margin: 0 auto;
   text-align: center;
-  font-family: 微软雅黑;
+  font-family: "微软雅黑";
 }
-.container .container_main .main .header h3 {
+.container .container_main .main .header .opt {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 10px;
+  font-size: 14px;
+  /*font-family: "微软雅黑";*/
+  color: #616161;
+}
+.container .container_main .main .header .opt input {
+  width: 16px;
+  height: 16px;
 }
 .container .container_main .main .header button {
   width: 20px;
@@ -66,6 +74,7 @@ body {
   background: url(../assets/user_reg_icon_student.png) no-repeat;
   background-size: cover;
 }
+/*输入框部分*/
 .container .container_main .main .content input {
   width: 368px;
   height: 50px;
@@ -76,7 +85,7 @@ body {
   /*outline: none;*/
   /*border: 1px solid #CED2D2;*/
 }
-
+/*按钮部分*/
 .container .container_main .main .btn {
   margin-top: 28px;
   text-align: center;

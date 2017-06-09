@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'dva';
 import veri from './Verification.css';
-import { Radio, Button, Input} from 'antd';
+import { Radio, Button, Input, AutoComplete} from 'antd';
 import fetch from 'dva/fetch';
+import { Router, Route, Link, hashHistory } from 'react-router';
 
 function Verification() {
     return (
@@ -13,18 +14,17 @@ function Verification() {
                     <div className={veri.main}>
                         {/*头部*/}
                         <div className={veri.header}>
-                            <h4>请先加入高校,高品质实践课等你来~</h4>
                             {/*学生*/}
                             <div className={veri.header_left}>
                                 <span className={veri.icon}></span>
-                                <span>
+                                <span className={veri.opt}>
                                     <input type="radio" id="student" name="myradio"/>我是学生
                                 </span>
                             </div>
                             {/*老师*/}
                             <div className={veri.header_right}>
                                 <span className={veri.icon}></span>
-                                <span>
+                                <span className={veri.opt}>
                                     <input type="radio" id="teacher" name="myradio"/>我是老师
                                 </span>
                             </div>
@@ -35,10 +35,10 @@ function Verification() {
                             <Input size="large" placeholder="请输入你的学号" />
                             <Input size="large" placeholder="请输入你的姓名" />
                         </div>
-                        {/*内容部分*/}
+                        {/*按钮部分*/}
                         <div className={veri.btn}>
                             <Button type="primary" id="btn">立即注册</Button>
-                            <a href="javascript:;">稍后认证</a>
+                            <Link to="/later">稍后认证</Link>
                         </div>
                     </div>
                 </div>
@@ -77,10 +77,9 @@ const getSchool = () => {
         let resData = school.map((value) => {
             return value.schoolName;
         })
-        console.log(resData.join(','))
+        console.log(resData)
     })
     
 }
-
 
 export default connect()(Verification);

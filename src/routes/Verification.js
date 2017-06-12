@@ -6,12 +6,23 @@ import { Router, Route, Link, hashHistory } from 'react-router';
 function Verification({ dispatch, school }) {
     const { list } = school;
     // console.log(list)
+    const info = () => {
+    message.info('请输入正确信息');
+};
+
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
+    </Menu.Item>
+  </Menu>
+);
     function getSchool() {
-        // dispatch({
-        //     type: 'school/fetch',
-        //     payload: {}
-        // })
-        // console.log(list)
+        dispatch({
+            type: 'school/fetch',
+            payload: {}
+        })
+        console.log(list)
     }
     function handleClick() {
         return (
@@ -53,6 +64,11 @@ function Verification({ dispatch, school }) {
                             <Input type="large" placeholder="请选择你的学校" id="getSchool" 
                             onMouseEnter={getSchool}
                             />
+                            <Dropdown overlay={menu}>
+                                <a className="ant-dropdown-link" href="#">
+                                Hover me <Icon type="down" />
+                                </a>
+                            </Dropdown>
                             <div className={veri.data_s }>
                                 <ul>
                                     {list.map(( value, key ) => {
@@ -73,7 +89,7 @@ function Verification({ dispatch, school }) {
                         </div>
                         {/*按钮部分*/}
                         <div className={veri.btn}>
-                            <Button type="primary" id="btn" onClick={handleClick}>立即注册</Button>
+                            <Button type="primary" id="btn" onClick={info}>立即注册</Button>
                             <Link to="/later">稍后认证</Link>
                         </div>
                     </div>

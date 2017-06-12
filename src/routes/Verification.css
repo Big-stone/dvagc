@@ -75,6 +75,9 @@ body {
   background-size: cover;
 }
 /*输入框部分*/
+.container .container_main .main .content{
+  position: relative;
+}
 .container .container_main .main .content input {
   width: 368px;
   height: 50px;
@@ -84,6 +87,33 @@ body {
   outline-color: #35B355;
   /*outline: none;*/
   /*border: 1px solid #CED2D2;*/
+}
+.container .container_main .main .content #warning{
+  display: inline-block;
+  width: 197px;
+  height: 17px;
+  margin-top: 3px;
+  color: red;
+  display: none;
+}
+
+.container .container_main .main .content .data_s{
+  width: 100%;
+  height: 100%;
+  /*border: 1px solid #000;*/
+  position: absolute;
+  z-index: 99999;
+}
+.container .container_main .main .content .data_s li {
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  background-color: skyblue;
+  padding-left: 9px;
+  border-bottom: 1px solid #000;
+}
+li:hover {
+  background-color: red;
 }
 /*按钮部分*/
 .container .container_main .main .btn {

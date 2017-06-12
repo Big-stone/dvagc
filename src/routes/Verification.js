@@ -1,11 +1,29 @@
 import React from 'react';
 import { connect } from 'dva';
 import veri from './Verification.css';
-import { Radio, Button, Input, AutoComplete} from 'antd';
-import fetch from 'dva/fetch';
+import { Radio, Button, Input, AutoComplete, Tooltip, Menu, Dropdown, Icon, message, Alert} from 'antd';
 import { Router, Route, Link, hashHistory } from 'react-router';
-
-function Verification() {
+function Verification({ dispatch, school }) {
+    const { list } = school;
+    // console.log(list)
+    function getSchool() {
+        // dispatch({
+        //     type: 'school/fetch',
+        //     payload: {}
+        // })
+        // console.log(list)
+    }
+    function handleClick() {
+        return (
+            <div>
+                <Alert message="错误" banner />
+            </div>
+        )
+    }
+    function handleChange(e) {
+        
+    }
+    
     return (
         <div>
             <div className={veri.container}>
@@ -31,13 +49,31 @@ function Verification() {
                         </div>
                         {/*内容部分*/}
                         <div className={veri.content} id="content">
-                            <Input type="large" placeholder="请选择你的学校" id="getSchool" onClick={getSchool}/>
-                            <Input size="large" placeholder="请输入你的学号" onChange={handleChange}/>
-                            <Input size="large" placeholder="请输入你的姓名" />
+                            <Tooltip placement="topLeft" title="学校">
+                            <Input type="large" placeholder="请选择你的学校" id="getSchool" 
+                            onMouseEnter={getSchool}
+                            />
+                            <div className={veri.data_s }>
+                                <ul>
+                                    {list.map(( value, key ) => {
+                                       return(
+                                           <li>{ value.schoolName }</li>
+                                       )
+                                    })}
+                                </ul>
+                            </div>
+                            <span id={veri.warning} >该学校没有你的信息,请联系老师。</span>
+                            </Tooltip>
+                            <Tooltip placement="topLeft" title="学号">
+                            <Input size="large" placeholder="请输入你的学号"/>
+                            </Tooltip>
+                            <Tooltip placement="topLeft" title="姓名">
+                            <Input size="large" placeholder="请输入你的姓名"/>
+                            </Tooltip>
                         </div>
                         {/*按钮部分*/}
                         <div className={veri.btn}>
-                            <Button type="primary" id="btn">立即注册</Button>
+                            <Button type="primary" id="btn" onClick={handleClick}>立即注册</Button>
                             <Link to="/later">稍后认证</Link>
                         </div>
                     </div>
@@ -46,43 +82,24 @@ function Verification() {
         </div>
     )
 }
-function parseJSON(response) {
-  return response.json();
-}
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
-
-const request = (url, options) => {
-    return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .catch(err => ({ err }));
-}
 
 // let content = document.getElementById('content');
 //     console.log(content) //null
 
-const getSchool = () => {
-    request('/api/schools.courseManagement.get').
-    then(data => {
-        let school = data.schools;
-        let resData = school.map((value) => {
-            return value.schoolName;
-        })
-        console.log(resData)
-    })
+// const getSchool = () => {
+//     request('/api/schools.courseManagement.get').
+//     then(data => {
+//         let school = data.schools;
+//         let resData = school.map((value) => {
+//             return value.schoolName;
+//         })
+//         console.log(resData)
+//     })
     
-}
+// }
 
-const handleChange = () => {
-    
+function mapStateToProps({ school }) {
+    return { school }
 }
-export default connect()(Verification);
+export default connect(mapStateToProps)(Verification);

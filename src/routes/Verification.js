@@ -1,3 +1,8 @@
+/**
+ * authro : liuqiushi
+ * description :
+*/
+
 import React from 'react';
 import { connect } from 'dva';
 import veri from './Verification.css';
@@ -7,18 +12,11 @@ import Complete from './Auto'
 import classnames from 'classnames';
 
 function Verification({ dispatch, school }) {
-    const { list } = school;
-    // console.log(list)
+    const { list, schools, studentNo, schoolName } = school;
+    console.log(schools)
     const info = () => {
-    message.info('请输入正确信息');
-};
-    function getSchool() {
-        dispatch({
-            type: 'school/fetch',
-            payload: {}
-        })
-        console.log(list)
-    }
+        message.info('请输入正确信息');
+    };
 
     function handleClick() {
         return (
@@ -27,10 +25,21 @@ function Verification({ dispatch, school }) {
             </div>
         )
     }
+
     function handleChange(e) {
-        
+        dispatch({
+            type: 'school/fetch',
+            payload: {}
+        })
     }
-    
+
+    const onTextChange = (e) => {
+        dispatch({
+            type: 'school/textDidChange',
+            studentNo: e.target.value
+        });
+    }
+
     return (
         <div>
             <div className={veri.container}>
@@ -57,18 +66,18 @@ function Verification({ dispatch, school }) {
                         {/*内容部分*/}
                         <div className={veri.content} id="content">
                             <Tooltip placement="topLeft" title="学校">
-                            <Complete  />
+                                <Complete onHandleChange={handleChange} schools={schools} value={schoolName}/>
                             </Tooltip>
 
                             <Tooltip placement="topLeft" title="学号">
-                            <Input size="large" placeholder="请输入你的学号" onClick={getSchool}/>
+                                <Input size="large" placeholder="请输入你的学号" onChange={onTextChange} value={studentNo}/>
                             </Tooltip>
 
                             <Tooltip placement="topLeft" title="姓名">
-                            <Input size="large" placeholder="请输入你的姓名"/>
+                                <Input size="large" placeholder="请输入你的姓名"/>
                             </Tooltip>
                         </div>
-                        
+
                         {/*按钮部分*/}
                         <div className={veri.btn}>
                             <Button type="primary" onClick={info}>立即认证</Button>
@@ -83,7 +92,7 @@ function Verification({ dispatch, school }) {
 }
 
 
-{/*<Input type="large" placeholder="请选择你的学校" id="getSchool" 
+{/*<Input type="large" placeholder="请选择你的学校" id="getSchool"
 onMouseEnter={getSchool}
 />*/}
 
@@ -101,7 +110,7 @@ onMouseEnter={getSchool}
 //         })
 //         console.log(resData)
 //     })
-    
+
 // }
 
 function mapStateToProps({ school }) {

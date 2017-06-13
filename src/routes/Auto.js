@@ -1,19 +1,24 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { AutoComplete } from 'antd';
 
-const dataSource = ['北京大学', '清华大学', '新道大学'];
+function Complete({ onHandleChange, schools }) {
 
-function Complete() {
-   
   return (
     <AutoComplete
-      style={{ 
-          width: 330,
+      style={{
+          width: 370,
        }}
-      dataSource={dataSource}
+      dataSource={schools}
       placeholder="请选择你的学校"
       filterOption={(inputValue, option) => option.props.children.indexOf(inputValue) !== -1}
+      onChange={onHandleChange}
     />
   );
 }
 
-export default (Complete)
+Complete.propTypes = {
+    onHandleChange: PropTypes.func
+}
+
+export default Complete;

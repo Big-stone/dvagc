@@ -19,7 +19,7 @@
   ],
   "proxy": {
     "/api": {
-    "target": "http://10.10.16.163/stest/",
+    "target": "http://10.10.16.175:8080/stest/",
     "changeOrigin": true,
     "pathRewrite": { "^/api" : "" }
     }

@@ -12,10 +12,11 @@ import Complete from './Auto'
 import classnames from 'classnames';
 
 function Verification({ dispatch, school }) {
-    const { list, schools, studentNo, schoolName } = school;
-    console.log(schools)
+    const { list, schools, schoolName, studentNo  } = school;
+    // console.log(schools)
     const info = () => {
         message.info('请输入正确信息');
+        console.log(schoolName)
     };
 
     function handleClick() {

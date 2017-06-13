@@ -18,7 +18,8 @@ function Complete({ onHandleChange, schools }) {
 }
 
 Complete.propTypes = {
-    onHandleChange: PropTypes.func
+    onHandleChange: PropTypes.func,
+    
 }
 
 export default Complete;
